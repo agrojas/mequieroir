@@ -1,16 +1,19 @@
+import random
+
 class User:
 	'Optional class documentation string'
 	userCount = 0
-	skillsDictionary = ["c","c++","c#","java","php","angular","cobol","objetos","ingles","git","viajar"]
+	skillsDictionary = ["c","c++","c#","java","php","angular","cobol","objetos","ingles","git","viajar","equipo"]
+	
 	def __init__(self):
 		User.userCount += 1
 		self.id = User.userCount
-		self.name = 'name' + self.id
-		self.phone = 'phone' + self.id
+		self.name = 'name' + str(self.id)
+		self.phone = 'phone' + str(self.id)
 		self.skills = {}
-		for skillLabel in skillsDictionary:
+		for skillLabel in User.skillsDictionary:
 			self.skills[skillLabel] = 0
-		self.goodProposal = []
+		self.goodProposals = []
 		self.badProposal = []
 		self.badCompanyProposal = []
 		self.badConditionsProposal = []
@@ -19,7 +22,7 @@ class User:
 	def setRandomSkills(self):
 		for key in self.skills:
 			if (key != "objetos"):
-				self.skills[key] = random.uniform(0, 1)
+				self.skills[key] = random.randint(0, 1)
 			if (key == "c++" or key == "c#" or key == "java" and self.skills[key] == 1):
 				self.skills[key] = 1
 
@@ -28,7 +31,7 @@ class User:
 		for x in range(0, quantity):
 			user = User()
 			user.setRandomSkills()
-			users[x] = user
+			users.append(user)
 		return users
 
 

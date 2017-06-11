@@ -1,5 +1,6 @@
 from Proposal import Proposal
 from User import User
+
 class Dataset:
 	'Optional class documentation string'
 	goodProposalFloor = 0.5
@@ -15,11 +16,11 @@ class Dataset:
 		self.setUsersGoodProposals()
 
 	def setUsersGoodProposals(self):
-		for usersKey in self.users:
-			for proposalKey in self.proposals:
-				if (len(self.users[usersKey].goodProposals)<Dataset.goodProposalsQuantity):
-					if(isGoodProposal(self.users[usersKey],self.proposals[proposalKey])):
-						self.users[usersKey].goodProposals.append(self.proposals[proposalKey])
+		for user in self.users:
+			for proposal in self.proposals:
+				if (len(user.goodProposals) < Dataset.goodProposalsQuantity):
+					if(self.isGoodProposal(user,proposal)):
+						user.goodProposals.append(proposal)
 				else:
 					break
 
@@ -29,6 +30,10 @@ class Dataset:
 		for skillLabel in proposal.skills:
 			if (proposal.skills[skillLabel] == 1):
 				skillsToKnown += 1
+				print(user)
+				print(user.skills)
+				print(skillLabel)
+				print(user.skills[skillLabel])
 				if (user.skills[skillLabel] == 1):
 					skillsKnown +=1
 		if (skillsKnown/float(skillsToKnown)>Dataset.goodProposalFloor):
@@ -47,18 +52,20 @@ class Dataset:
 	def getProposalAsLine(self,proposal):
 		line = ""
 		for skillLabel in proposal.skills:
-			headerLine += proposal.skills[skillLabel] + ","
+			line += str(proposal.skills[skillLabel]) + ","
 		for benefitLabel in proposal.benefits:
-			headerLine += proposal.benefits[benefitLabel] + ","
-		headerLine += proposal.id
-		return headerLine
+			line += str(proposal.benefits[benefitLabel]) + ","
+		line += str(proposal.id)
+		return line
 
 	def saveProposalsToCsv(self,datasetPath):
 		file = open(datasetPath,"w")
-		for x in self.proposals:
-			if (x == 0):
-				file.write(getProposalHeaderLine(self.proposal))
-			file.write(getProposalAsLine(self.proposal))
+		count = 0
+		for proposal in self.proposals:
+			if (count == 0):
+				file.write(self.getProposalHeaderLine(proposal)+"\n")
+			file.write(self.getProposalAsLine(proposal)+"\n")
+			count+=1
 		file.close
 
 
