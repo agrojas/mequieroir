@@ -30,10 +30,11 @@ class NeighborsTool:
 		    return
 		knn = self.model.query(self.sf[:id], 'proposalId', k=neighborsQuantity)
 		#knn.export_csv("C:\\Users\\Marina\\gl-env\\Scripts\\aplicaciones\\resultado1.csv",',')
-		result = {}
-		result["proposal_id"] = knn["reference_label"] 
-		result["rank"] = knn["rank"] 		
-		result["distance"] = knn["distance"] 		
 		knn.print_rows(neighborsQuantity)	
+		knnResults = knn[:neighborsQuantity] 
+		result = {}
+		result["proposal_id"] = list(knnResults["reference_label"]) 
+		result["rank"] = list(knnResults["rank"])
+		result["distance"] = list(knnResults["distance"]) 		
 		return result
 	
