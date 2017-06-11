@@ -42,12 +42,21 @@ def detail(request, id):
 
 def results(request, id):
     proposalToResponse = -1
-    for proposal in datasetInitializer.proposals:
-        if (str(proposal.id) == str(id)):
-            proposalToResponse = id
-            response = neighborsTool.query(int(id),5)
-    #neighborsTool.modelSumary()   
-    
+
+    response = {}
+    for user in datasetInitializer.users:
+        if (user.id == int(id)):
+            for proposal in user.goodProposals:
+                proposalToResponse = proposal.id
+                auxResponse = neighborsTool.query(proposal.id,5)
+                if not ("proposal_id" in response):
+                    response = auxResponse
+                else:
+                    if (("proposal_id" in response) and ("proposal_id" in auxResponse)):
+                        response["proposal_id"] += auxResponse["proposal_id"]
+                        response["rank"] += auxResponse["rank"]
+                        response["distance"] += auxResponse["distance"]
+
     if (proposalToResponse == -1):   
         response = "ERROR"
 
