@@ -19,10 +19,8 @@ class Proposal:
 	
 	def setRandomSkills(self):
 		for key in self.skills:
-			print(key)
 			if (key != "objetos"):
 				self.skills[key] = random.randint(0, 1)
-
 			if (key == "c++" or key == "c#" or key == "java" and self.skills[key] == 1):
 				self.skills["objetos"] = 1
 

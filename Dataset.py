@@ -30,10 +30,6 @@ class Dataset:
 		for skillLabel in proposal.skills:
 			if (proposal.skills[skillLabel] == 1):
 				skillsToKnown += 1
-				print(user)
-				print(user.skills)
-				print(skillLabel)
-				print(user.skills[skillLabel])
 				if (user.skills[skillLabel] == 1):
 					skillsKnown +=1
 		if (skillsKnown/float(skillsToKnown)>Dataset.goodProposalFloor):
