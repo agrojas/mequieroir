@@ -1,6 +1,6 @@
 import Proposal
 import User
-class DatasetInitializer:
+class Dataset:
 	'Optional class documentation string'
 	goodProposalFloor = 0.5
 	goodProposalsQuantity = 3
@@ -10,14 +10,14 @@ class DatasetInitializer:
 	def initialize(self):
 		self.users = User().getRandomUsers(10)
 		self.proposals = Proposal().getRandomProposals(200)
-		#DatasetInitializer.users = self.user.getRandomUsers(10)
-		#DatasetInitializer.proposals = self.proposal.getRandomProposals(200)
+		#Dataset.users = self.user.getRandomUsers(10)
+		#Dataset.proposals = self.proposal.getRandomProposals(200)
 		self.setUsersGoodProposals()
 
 	def setUsersGoodProposals(self):
 		for usersKey in self.users:
 			for proposalKey in self.proposals:
-				if (len(self.users[usersKey].goodProposals)<DatasetInitializer.goodProposalsQuantity):
+				if (len(self.users[usersKey].goodProposals)<Dataset.goodProposalsQuantity):
 					if(isGoodProposal(self.users[usersKey],self.proposals[proposalKey])):
 						self.users[usersKey].goodProposals.append(self.proposals[proposalKey])
 				else:
@@ -31,7 +31,7 @@ class DatasetInitializer:
 				skillsToKnown += 1
 				if (user.skills[skillLabel] == 1):
 					skillsKnown +=1
-		if (skillsKnown/float(skillsToKnown)>DatasetInitializer.goodProposalFloor):
+		if (skillsKnown/float(skillsToKnown)>Dataset.goodProposalFloor):
 			return True
 		return False
 
@@ -41,7 +41,7 @@ class DatasetInitializer:
 			headerLine += skillLabel + ","
 		for benefitLabel in proposal.benefits:
 			headerLine += benefitLabel + ","
-		headerLine = headerLine[:-1]
+		headerLine += "proposalId"
 		return headerLine
 
 	def getProposalAsLine(self,proposal):
@@ -50,7 +50,7 @@ class DatasetInitializer:
 			headerLine += proposal.skills[skillLabel] + ","
 		for benefitLabel in proposal.benefits:
 			headerLine += proposal.benefits[benefitLabel] + ","
-		headerLine = headerLine[:-1]
+		headerLine += proposal.id
 		return headerLine
 
 	def saveProposalsToCsv(self,datasetPath):
