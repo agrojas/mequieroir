@@ -1,5 +1,5 @@
-import Proposal
-import User
+from Proposal import Proposal
+from User import User
 class Dataset:
 	'Optional class documentation string'
 	goodProposalFloor = 0.5
