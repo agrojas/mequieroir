@@ -15,6 +15,9 @@ class Dataset:
 		#Dataset.proposals = self.proposal.getRandomProposals(200)
 		self.setUsersGoodProposals()
 
+	def getProposals(self):
+		return self.proposals
+
 	def setUsersGoodProposals(self):
 		for user in self.users:
 			for proposal in self.proposals:

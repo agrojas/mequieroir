@@ -1,16 +1,15 @@
 # -*- coding: utf-8 -*-
 from django.http import HttpResponse,JsonResponse
+from django.core import serializers
+from django.core.serializers.json import DjangoJSONEncoder
 
-import sys,traceback
+import sys,traceback,json
 # Add the ptdraft folder path to the sys.path list
 sys.path.append('../../mequieroir')
 
 # Now you can import your module
 from Dataset import *
 from NeighborsTool import *
-import json
-from django.core import serializers
-from django.core.serializers.json import DjangoJSONEncoder
 
 datasetInitializer = Dataset()
 neighborsTool = None
@@ -40,6 +39,26 @@ def detail(request, id):
     response = getData()
     return HttpResponse(response)
 
+
+def getProposalById(id):
+    for proposal in datasetInitializer.getProposals():
+        if (proposal.id == id):
+            return proposal
+    return {}
+
+def makeCompleteResponse(data):
+    response = {}
+    proposals = []
+    for x in range(0, len(data["proposal_id"])):    
+        proposal = {}
+        proposal["proposal"] = getProposalById(data["proposal_id"][x])
+        proposal["distance"] = data["distance"][x]
+        proposal["rank"] = data["rank"][x]
+
+    response["proposals"] = proposals
+    response["user"] = data["user"]
+    return response
+
 def results(request, id):
     proposalToResponse = -1
 
@@ -51,6 +70,7 @@ def results(request, id):
                 auxResponse = neighborsTool.query(proposal.id,5)
                 if not ("proposal_id" in response):
                     response = auxResponse
+                    response["user"] = user
                 else:
                     if (("proposal_id" in response) and ("proposal_id" in auxResponse)):
                         response["proposal_id"] += auxResponse["proposal_id"]
@@ -60,11 +80,11 @@ def results(request, id):
     if (proposalToResponse == -1):   
         response = "ERROR"
 
+    completeResponse = makeCompleteResponse(response)
     response_data = {}
     try:
         response_data['result'] = 'Success'
-        #response_data['message'] = serializers.serialize('json', json.dumps(jsonify(response)))
-        response_data['message'] = json.dumps(jsonify(response))
+        response_data['message'] = json.dumps(jsonify(completeResponse))
     except:
         traceback.print_exc()
         response_data['result'] = 'Ouch!'
