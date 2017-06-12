@@ -3,7 +3,9 @@ from django.http import HttpResponse
 from mock import *
 import sys
 # Add the ptdraft folder path to the sys.path list
+print sys.path
 sys.path.append('../../mequieroir')
+#sys.path.append('..\\..\\aplicacionesInfo')
 
 # Now you can import your module
 from Dataset import *
