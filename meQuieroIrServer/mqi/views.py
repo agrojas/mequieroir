@@ -31,6 +31,10 @@ def jsonify(data):
             key = str(key)
         if type(value).__module__=='numpy': # if value is numpy.*: > to python list
             value = value.tolist()
+        if isinstance(value, User): # for User
+            value = {"id":value.id,"name":value.name,"skills":value.skills}
+        if isinstance(value, Proposal): # for User
+            value = {"id":value.id,"benefits":value.benefits,"skills":value.skills}
         json_data[key] = value
     return json_data
 
@@ -56,6 +60,7 @@ def makeCompleteResponse(data):
         proposal["proposal"] = getProposalById(data["proposal_id"][x])
         proposal["distance"] = data["distance"][x]
         proposal["rank"] = data["rank"][x]
+        proposals.append(proposal)
 
     response["proposals"] = proposals
     response["user"] = data["user"]
@@ -73,6 +78,7 @@ def results(request, id):
                 if not ("proposal_id" in response):
                     response = auxResponse
                     response["user"] = user
+                    break
                 else:
                     if (("proposal_id" in response) and ("proposal_id" in auxResponse)):
                         response["proposal_id"] += auxResponse["proposal_id"]
@@ -86,11 +92,11 @@ def results(request, id):
     response_data = {}
     try:
         response_data['result'] = 'Success'
-        response_data['message'] = json.dumps(jsonify(completeResponse))
+        response_data['data'] = jsonify(completeResponse)
     except:
         traceback.print_exc()
         response_data['result'] = 'Ouch!'
-        response_data['message'] = 'Script has not ran correctly'
+        response_data['data'] = 'Script has not ran correctly'
     
     return HttpResponse(JsonResponse(response_data), content_type="application/json")
 
