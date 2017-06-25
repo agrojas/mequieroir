@@ -3,14 +3,14 @@ from User import User
 
 class Dataset:
 	'Optional class documentation string'
-	goodProposalFloor = 0.7
+	goodProposalFloor = 0.8
 	goodProposalsQuantity = 3
 	#users = []
 	#proposals = []
 	
 	def initialize(self):
 		self.users = User.getRandomUsers(10)
-		self.proposals = Proposal.getRandomProposals(2000)
+		self.proposals = Proposal.getRandomProposals(5000)
 		#Dataset.users = self.user.getRandomUsers(10)
 		#Dataset.proposals = self.proposal.getRandomProposals(200)
 		self.setUsersGoodProposals()
@@ -23,6 +23,7 @@ class Dataset:
 			for proposal in self.proposals:
 				if (len(user.goodProposals) < Dataset.goodProposalsQuantity):
 					if(self.isGoodProposal(user,proposal)):
+						#print 'esta agregando una buena propuesta'
 						user.goodProposals.append(proposal)
 				else:
 					break
@@ -35,9 +36,20 @@ class Dataset:
 				skillsToKnown += 1
 				if (user.skills[skillLabel] == 1):
 					skillsKnown +=1
-		if (skillsKnown/float(skillsToKnown)>Dataset.goodProposalFloor):
+		if (skillsKnown/float(skillsToKnown)>=Dataset.goodProposalFloor):
+			#print 'skillsKnown ' + str(skillsKnown) + 'skillsToKnown ' + str(skillsToKnown) + 'hegith ' + str(skillsKnown/float(skillsToKnown))
 			return True
 		return False
+
+	def howGoodProposalIs(self,user,proposal):
+		skillsToKnown = 0
+		skillsKnown = 0
+		for skillLabel in proposal.skills:
+			if (proposal.skills[skillLabel] == 1):
+				skillsToKnown += 1
+				if (user.skills[skillLabel] == 1):
+					skillsKnown +=1
+		return skillsKnown/float(skillsToKnown) 
 
 	def getProposalHeaderLine(self,proposal):
 		headerLine = ""

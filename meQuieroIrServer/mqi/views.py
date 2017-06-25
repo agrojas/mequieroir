@@ -64,6 +64,7 @@ def makeCompleteResponse(data):
 
     response["proposals"] = proposals
     response["user"] = data["user"]
+    response["goodProposal"] = data["goodProposal"]
     return response
 
 def results(request, id):
@@ -72,12 +73,16 @@ def results(request, id):
     response = {}
     for user in datasetInitializer.users:
         if (user.id == int(id)):
+            if(len(user.goodProposals) == 0):
+                print 'el user no tiene ninguna buena propuesta para usar de referencia'
             for proposal in user.goodProposals:
+                print 'encontro una buena propuesta en el user'
                 proposalToResponse = proposal.id
                 auxResponse = neighborsTool.query(proposal.id,5)
                 if not ("proposal_id" in response):
                     response = auxResponse
                     response["user"] = user
+                    response["goodProposal"] = proposal
                     break
                 else:
                     if (("proposal_id" in response) and ("proposal_id" in auxResponse)):
