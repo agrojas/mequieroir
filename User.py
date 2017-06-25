@@ -24,9 +24,10 @@ class User:
 			if (key != "objetos"):
 				self.skills[key] = random.randint(0, 1)
 			if (key == "c++" or key == "c#" or key == "java" and self.skills[key] == 1):
-				self.skills[key] = 1
+				self.skills["objetos"] = 1
 
-	def getRandomUsers(self,quantity):
+	@staticmethod			
+	def getRandomUsers(quantity):
 		users = []
 		for x in range(0, quantity):
 			user = User()

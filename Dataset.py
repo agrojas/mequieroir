@@ -3,14 +3,14 @@ from User import User
 
 class Dataset:
 	'Optional class documentation string'
-	goodProposalFloor = 0.5
+	goodProposalFloor = 0.7
 	goodProposalsQuantity = 3
 	#users = []
 	#proposals = []
 	
 	def initialize(self):
-		self.users = User().getRandomUsers(10)
-		self.proposals = Proposal().getRandomProposals(200)
+		self.users = User.getRandomUsers(10)
+		self.proposals = Proposal.getRandomProposals(2000)
 		#Dataset.users = self.user.getRandomUsers(10)
 		#Dataset.proposals = self.proposal.getRandomProposals(200)
 		self.setUsersGoodProposals()

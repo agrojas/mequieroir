@@ -31,7 +31,8 @@ class Proposal:
 			if (key == "c++" or key == "c#" or key == "java" and self.benefits[key] == 1):
 				self.benefits[key] = 1
 
-	def getRandomProposals(self,quantity):
+	@staticmethod
+	def getRandomProposals(quantity):
 		proposals = []
 		for x in range(0, quantity):
 			proposal = Proposal()
