@@ -1,2 +1,5 @@
 *.pyc 
 *.csv
+front/node_modules
+front/bower_components
+front/app/jspm_packages
