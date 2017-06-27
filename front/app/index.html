@@ -15,12 +15,16 @@
 <body ng-cloak layout="column" ng-controller="AppController as app">
 
   <!-- Container #1 (see wireframe) -->
-  <md-toolbar layout="row" class="md-toolbar-tools">
+  <md-toolbar layout="row" class="md-toolbar-tools" layout-align="space-between center" flex>
     <md-button class="menu md-icon-button" hide-gt-sm ng-click="app.toggleList()"
                aria-label="Show proposal List">
       <md-icon md-svg-icon="menu"></md-icon>
     </md-button>
     <h1>Me Quiero Ir</h1>
+    <md-button class="menu md-icon-button"  
+               aria-label="Show proposal List">
+      <md-icon md-svg-icon="share"></md-icon>
+    </md-button>    
   </md-toolbar>
 
   <!-- Container #2 -->

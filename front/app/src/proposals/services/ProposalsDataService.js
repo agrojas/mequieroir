@@ -8,12 +8,18 @@
  */
 function ProposalsDataService($q) {
   var Proposals = [
+    /*{
+      name: "Desarrollador Jr",
+      avatar: "svg-1",
+      skills: ["objetos","equipo"],
+      benefits: ["Flexibilidad Horaria","Home Office"],
+      content: "Mail: people@zedplan.com -Estamos en la búsqueda de un programador Junior. La persona seleccionada deberá poseer disponibilidad para asistir a nuestras oficinas ubicadas en zona Av. Gaona y Av. Boyaca, Capital Federal. Tiempo completo o medio tiempo.En nuestra empresa nos dedicamos a desarrollar todo tipo de Aplicaciones Web 2.0 con las implementación de las últimas tecnologías disponibles en el mercado. Junto con toda nuestra creatividad y experiencia tratamos de lograr soluciones innovadoras que generen un verdadero impacto tanto en nuestros clientes como en los usuarios de los sistemas que desarrollamos. Nuestros clientes son variados desde pequeñas pymes a importantes empresas. Tecnologias que utilizarás y aprenderás: -HTML 5: JavaScript, jQuery, Bootstrap. -PHP 5:POO. Framework MVC. -Nginx: optimizacion para entornos de producción. -MySQL:5.6, Stores, Triggers, Fulltext. -Control de versiones con GIT. Entornos para desarrollo: -Linux. Mail: people@zedplan.com"
+    },
     {
       name: "Desarrollador Java Ssr",
       avatar: "svg-1",
-      phone: "111-2222",
       skills: ["java","objetos","ingles","git","viajar","equipo"],
-      benefits: ["flexibilidadHoraria","homeOffice","bonoObjetivo"],
+      benefits: ["Flexibilidad Horaria","Home Office","Bono Objetivo"],
       content: "IT Company se encuentra en la búsqueda de un Desarrollador Java Ssr. para sumarse al equipo de una importante empresa de seguros. \
                 Tareas/Responsabilidades: \
                 ·         Desarrollo de requerimientos. \
@@ -23,25 +29,23 @@ function ProposalsDataService($q) {
                 Requisitos del puesto: \
                 ·         Orientamos la búsqueda a estudiante o graduado de sistemas. \
                 ·         Contar con al menos 2 años de experiencia en posiciones similares."
-    },
-    {
+    }
+    ,{
       name: "Analista Funcional",
       avatar: "svg-2",
-      phone: "111-2222",
       skills: ["analisis","ingles","git","viajar","equipo"],
-      benefits: ["flexibilidadHoraria","homeOffice","bonoObjetivo","capacitacion"],
+      benefits: ["Flexibilidad Horaria","Home Office","Bono Objetivo","Capacitacion en Idiomas"],
       content: "Tareas y funciones:Interpretar, analizar y documentar requerimientos de Areas Internas y clientes externos. \
                 -Interpretar, analizar documentación Técnica y funcional. \
                 -Participar en la elaboración de Propuestas de solución a los requerimientos recibidos. Principalmente orientadas a Desarrollo de Recaudaciones en\
                 Aplicaciones integradas a la línea de caja de las Entidades y a través de canales electrónicos.\
                 -Elaborar documentación para Areas Internas y Clientes Externos"
-    },
-    {
+    }
+    ,{
       name: "Ingeniero de Desarrollo",
       avatar: "svg-3",
-      phone: "111-2222",
       skills: ["c","c++","c#","java","php","angular","cobol","objetos","ingles","git","viajar","equipo"],
-      benefits: ["flexibilidadHoraria","homeOffice","bonoObjetivo","capacitacion"],
+      benefits: ["Home Office","Bono Objetivo","Capacitacion en Idiomas"],
       content: "Ingeniero de Desarrollo \
                   Las responsabilidades del puesto serán:\
                   Controlar la contratación de servicios tecnológicos de la compañía\
@@ -52,22 +56,20 @@ function ProposalsDataService($q) {
                   Trabajar en conjunto con los contratistas de distintos servicios en la resolución de los problemas técnicos de los productos.\
                   Realizar seguimiento a los indicadores de gestión, e implementar mejoras de ser necesario\
                   Establecer mecanismos de control para tratar el producto o servicio no conforme"
-    },
-    {
+    }
+    ,*/{
       name: "Desarrollador Java Sr",
       avatar: "svg-4",
-      phone: "111-2222",
-      skills: ["c","c++","c#","java","php","angular","cobol","objetos","ingles","git","viajar","equipo"],
-      benefits: ["flexibilidadHoraria","homeOffice","bonoObjetivo","capacitacion"],
+      skills: ["c++","c#","java","objetos","ingles","git","equipo"],
+      benefits: ["Flexibilidad Horaria","Home Office","Bono Objetivo","capacitacion"],
       content: "En Wavent, empresa Líder de Clasificados Online , estamos en la búsqueda de Java Developers Sr .\ Perteneciendo al equipo de tecnología regional de Navent no solo vas a diseñar, programar y crear nuevas funcionalidades, si no que vas a participar de la totalidad del ciclo de desarrollo del producto.\
 Este equipo es quien se encarga de colaborar con la mejora continua de la plataforma que da servicio a todos nuestros portales."
-    },
-    {
+    }
+    /*,{
       name: "Programador .NET",
       avatar: "svg-2",
-      phone: "111-2222",
-      skills: ["c","c++","c#","java","php","angular","cobol","objetos","ingles","git","viajar","equipo"],
-      benefits: ["flexibilidadHoraria","homeOffice","bonoObjetivo","capacitacion"],
+      skills: ["c#","objetos","ingles","git","viajar","equipo"],
+      benefits: ["Flexibilidad Horaria","Bono Objetivo","capacitacion"],
       content: "IT Resources se encuentra en la búsqueda de un Programador .Net para sumarse al equipo de una importante cadena de mayoristas.\
                 Tareas/Responsabilidades:\
                 Desarrollo y Mantenimiento evolutivo .NET y de interfaces con periféricos (POSNET/Impresoras Fiscales).\
@@ -77,16 +79,15 @@ Este equipo es quien se encarga de colaborar con la mejora continua de la plataf
                 Orientamos la búsqueda a estudiantes en curso o graduados de Sistemas.\
                 Contar con al menos 2 años de experiencia en posiciones similares.\
                 Capacidad de análisis de procesos y diseño de soluciones."
-    },
-    {
+    }
+    ,{
       name: "Especialista en seguridad de la informacion y ciberseguridad",
       avatar: "svg-4",
-      phone: "111-2222",
-      skills: ["c","c++","c#","java","php","angular","cobol","objetos","ingles","git","viajar","equipo"],
-      benefits: ["flexibilidadHoraria","homeOffice","bonoObjetivo","capacitacion"],
+      skills: ["c#","c","c++","ingles","git","viajar","equipo"],
+      benefits: ["Flexibilidad Horaria","Home Office","Bono Objetivo","capacitacion"],
       content: "Objetivo de la posición\
   Estamos buscando un investigador en temas relacionados con Seguridad de la Información y CiberSeguridad con ganas de proporcionar ideas nuevas y disruptivas en investigaciones y análisis sobre Seguridad de la información. Desarrollar nuevas herramientas, conceptos e informes. Mantener un profundo conocimiento sobre los diferentes ecosistemas de seguridad, nuevas tecnologías y tendencias."
-    }
+    }*/
   ];
 
   // Promise-based API
