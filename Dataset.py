@@ -1,18 +1,23 @@
 from Proposal import Proposal
 from User import User
+from FixedInitializer import FixedInitializer
 
 class Dataset:
 	'Optional class documentation string'
 	goodProposalFloor = 0.8
 	goodProposalsQuantity = 3
-	#users = []
-	#proposals = []
 	
-	def initialize(self):
+	def __init__(self):
+		self.users = []
+		self.proposal = []
+
+	def fixedInitialize(self):
+		FixedInitializer.initialize(self.users,self.proposals)
+		self.setUsersGoodProposals()
+
+	def randomInitialize(self):
 		self.users = User.getRandomUsers(10)
 		self.proposals = Proposal.getRandomProposals(5000)
-		#Dataset.users = self.user.getRandomUsers(10)
-		#Dataset.proposals = self.proposal.getRandomProposals(200)
 		self.setUsersGoodProposals()
 
 	def getProposals(self):

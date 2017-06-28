@@ -6,17 +6,17 @@ from django.core.serializers.json import DjangoJSONEncoder
 import sys,traceback,json
 # Add the ptdraft folder path to the sys.path list
 print sys.path
-sys.path.append('../../mequieroir')
-#sys.path.append('..\\..\\aplicacionesInfo')
+#sys.path.append('../../mequieroir')
+sys.path.append('..\\..\\aplicacionesInfo')
 
 # Now you can import your module
 from Dataset import *
 from NeighborsTool import *
 
 datasetInitializer = Dataset()
-neighborsTool = None
-datasetInitializer.initialize()
+datasetInitializer.randomInitialize()
 datasetInitializer.saveProposalsToCsv("proposals.csv");
+neighborsTool = None
 neighborsTool = NeighborsTool("proposals.csv")
 
 

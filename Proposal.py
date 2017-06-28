@@ -9,7 +9,7 @@ class Proposal:
 		Proposal.proposalCount += 1
 		self.id = Proposal.proposalCount
 		self.name = 'name' + str(self.id)
-		self.phone = 'phone' + str(self.id)
+		#self.phone = 'phone' + str(self.id)
 		self.skills = {}
 		for skillLabel in Proposal.skillsDictionary:
 			self.skills[skillLabel] = 0
