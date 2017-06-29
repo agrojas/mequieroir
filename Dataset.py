@@ -10,7 +10,7 @@ class Dataset:
 	
 	def __init__(self):
 		self.users = []
-		self.proposal = []
+		self.proposals = []
 
 	def fixedInitialize(self):
 		FixedInitializer.initialize(self.users,self.proposals)
@@ -26,13 +26,16 @@ class Dataset:
 
 	def setUsersGoodProposals(self):
 		for user in self.users:
+			selectedProposalRank = 0
+			selectedProposal = None
 			for proposal in self.proposals:
-				if (len(user.goodProposals) < Dataset.goodProposalsQuantity):
-					if(self.isGoodProposal(user,proposal)):
-						#print 'esta agregando una buena propuesta'
-						user.goodProposals.append(proposal)
-				else:
-					break
+				currentProposalRank = self.howGoodProposalIs(user,proposal)
+				if (currentProposalRank > selectedProposalRank):
+					selectedProposal = proposal
+					selectedProposalRank = currentProposalRank
+				if (selectedProposalRank > Dataset.goodProposalFloor):
+					break	
+			user.goodProposals.append(selectedProposal)	
 
 	def isGoodProposal(self,user,proposal):
 		skillsToKnown = 0
@@ -50,10 +53,9 @@ class Dataset:
 		skillsToKnown = 0
 		skillsKnown = 0
 		for skillLabel in proposal.skills:
-			if (proposal.skills[skillLabel] == 1):
-				skillsToKnown += 1
-				if (user.skills[skillLabel] == 1):
-					skillsKnown +=1
+			skillsToKnown += 1
+			if (skillLabel in user.skills):
+				skillsKnown +=1
 		return skillsKnown/float(skillsToKnown) 
 
 	def getProposalHeaderLine(self,proposal):

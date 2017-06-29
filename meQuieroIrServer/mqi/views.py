@@ -14,7 +14,8 @@ from Dataset import *
 from NeighborsTool import *
 
 datasetInitializer = Dataset()
-datasetInitializer.randomInitialize()
+#datasetInitializer.randomInitialize()
+datasetInitializer.fixedInitialize()
 datasetInitializer.saveProposalsToCsv("proposals.csv");
 neighborsTool = None
 neighborsTool = NeighborsTool("proposals.csv")
@@ -34,7 +35,7 @@ def jsonify(data):
         if isinstance(value, User): # for User
             value = {"id":value.id,"name":value.name,"skills":value.skills}
         if isinstance(value, Proposal): # for User
-            value = {"id":value.id,"benefits":value.benefits,"skills":value.skills}
+            value = {"id":value.id,"benefits":value.benefits,"skills":value.skills,"content":value.content}
         json_data[key] = value
     return json_data
 

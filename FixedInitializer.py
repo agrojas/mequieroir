@@ -6,16 +6,16 @@ class FixedInitializer:
 	'Optional class documentation string'
 	
 	@staticmethod
-	def initialize(self,users,proposals):
+	def initialize(users,proposals):
 		user = User()
 		user.name = "user 1"
 		user.skills = ["java","objetos"]
-		users.append(proposal)
+		users.append(user)
 
 		user = User()
 		user.name = "user 2"
 		user.skills = ["analisis","UML"]
-		users.append(proposal)
+		users.append(user)
 
 		proposal = Proposal()
 		proposal.name = "Desarrollador Jr"
