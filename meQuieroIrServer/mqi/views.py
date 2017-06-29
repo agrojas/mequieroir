@@ -35,7 +35,7 @@ def jsonify(data):
         if isinstance(value, User): # for User
             value = {"id":value.id,"name":value.name,"skills":value.skills}
         if isinstance(value, Proposal): # for User
-            value = {"id":value.id,"benefits":value.benefits,"skills":value.skills,"content":value.content}
+            value = {"id":value.id,"benefits":value.benefits,"skills":value.skills,"content":value.content,"name":value.name}
         json_data[key] = value
     return json_data
 

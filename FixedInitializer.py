@@ -20,7 +20,7 @@ class FixedInitializer:
 		proposal = Proposal()
 		proposal.name = "Desarrollador Jr"
 		proposal.avatar = "svg-1"
-		proposal.skills = ["objetos","equipo"]
+		proposal.skills = ["objetos","equipo","Front End","MySql"]
 		proposal.benefits = ["Flexibilidad Horaria","Home Office"]
 		proposal.content = "Mail: people@zedplan.com -Estamos en la búsqueda de un programador Junior. La persona seleccionada deberá poseer disponibilidad para asistir a nuestras oficinas ubicadas en zona Av. Gaona y Av. Boyaca, Capital Federal. Tiempo completo o medio tiempo.En nuestra empresa nos dedicamos a desarrollar todo tipo de Aplicaciones Web 2.0 con las implementación de las últimas tecnologías disponibles en el mercado. Junto con toda nuestra creatividad y experiencia tratamos de lograr soluciones innovadoras que generen un verdadero impacto tanto en nuestros clientes como en los usuarios de los sistemas que desarrollamos. Nuestros clientes son variados desde pequeñas pymes a importantes empresas. Tecnologias que utilizarás y aprenderás: -HTML 5: JavaScript, jQuery, Bootstrap. -PHP 5:POO. Framework MVC. -Nginx: optimizacion para entornos de producción. -MySQL:5.6, Stores, Triggers, Fulltext. -Control de versiones con GIT. Entornos para desarrollo: -Linux. Mail: people@zedplan.com"
 		proposals.append(proposal)
