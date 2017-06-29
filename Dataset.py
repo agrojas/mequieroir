@@ -1,6 +1,7 @@
 from Proposal import Proposal
 from User import User
 from FixedInitializer import FixedInitializer
+from Dictionary import Dictionary
 
 class Dataset:
 	'Optional class documentation string'
@@ -37,10 +38,9 @@ class Dataset:
 		skillsToKnown = 0
 		skillsKnown = 0
 		for skillLabel in proposal.skills:
-			if (proposal.skills[skillLabel] == 1):
-				skillsToKnown += 1
-				if (user.skills[skillLabel] == 1):
-					skillsKnown +=1
+			skillsToKnown += 1
+			if (skillLabel in user.skills):
+				skillsKnown +=1
 		if (skillsKnown/float(skillsToKnown)>=Dataset.goodProposalFloor):
 			#print 'skillsKnown ' + str(skillsKnown) + 'skillsToKnown ' + str(skillsToKnown) + 'hegith ' + str(skillsKnown/float(skillsToKnown))
 			return True
@@ -58,19 +58,25 @@ class Dataset:
 
 	def getProposalHeaderLine(self,proposal):
 		headerLine = ""
-		for skillLabel in proposal.skills:
+		for skillLabel in Dictionary.getSkills():
 			headerLine += skillLabel + ","
-		for benefitLabel in proposal.benefits:
+		for benefitLabel in Dictionary.getBenefits():
 			headerLine += benefitLabel + ","
 		headerLine += "proposalId"
 		return headerLine
 
 	def getProposalAsLine(self,proposal):
 		line = ""
-		for skillLabel in proposal.skills:
-			line += str(proposal.skills[skillLabel]) + ","
-		for benefitLabel in proposal.benefits:
-			line += str(proposal.benefits[benefitLabel]) + ","
+		for skillLabel in Dictionary.getSkills():
+			skillValue = 0
+			if(skillLabel in proposal.skills):
+				skillValue = 1
+			line += str(skillValue) + ","
+		for benefitLabel in Dictionary.getBenefits():
+			benefitValue = 0
+			if (benefitLabel in proposal.benefits):
+				benefitValue = 1
+			line += str(benefitValue) + ","
 		line += str(proposal.id)
 		return line
 

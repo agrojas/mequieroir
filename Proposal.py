@@ -9,27 +9,27 @@ class Proposal:
 		Proposal.proposalCount += 1
 		self.id = Proposal.proposalCount
 		self.name = 'name' + str(self.id)
+		self.content = ""
+		self.avatar = ""
 		#self.phone = 'phone' + str(self.id)
-		self.skills = {}
-		for skillLabel in Dictionary.getSkills():
-			self.skills[skillLabel] = 0
-		self.benefits = {}
-		for benefitLabel in Dictionary.getBenefits():
-			self.benefits[benefitLabel] = 0
+		self.skills = []
+		self.benefits = []
 	
 	def setRandomSkills(self):
-		for key in self.skills:
-			if (key != "objetos"):
-				self.skills[key] = random.randint(0, 1)
-			if (key == "c++" or key == "c#" or key == "java" and self.skills[key] == 1):
-				self.skills["objetos"] = 1
+		self.skills = []
+		while (len(self.skills)==0):
+			for key in Dictionary.getSkills():
+				if (key != "objetos"):
+					if(random.randint(0, 1) == 1):
+						self.skills.append(key)
+						if (key == "c++" or key == "c#" or key == "java"):
+							self.skills.append("objetos")
 
 	def setRandomBenefits(self):
-		for key in self.benefits:
-			if (key != "objetos"):
-				self.benefits[key] = random.randint(0, 1)
-			if (key == "c++" or key == "c#" or key == "java" and self.benefits[key] == 1):
-				self.benefits[key] = 1
+		self.benefits = []
+		for key in Dictionary.getBenefits():
+			if(random.randint(0, 1) == 1):
+				self.benefits.append(key)
 
 	@staticmethod
 	def getRandomProposals(quantity):
