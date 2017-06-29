@@ -1,17 +1,17 @@
 import random
+from Dictionary import Dictionary
 
 class User:
 	'Optional class documentation string'
 	userCount = 0
-	skillsDictionary = ["c","c++","c#","java","php","angular","cobol","objetos","ingles","git","viajar","equipo"]
-	
+		
 	def __init__(self):
 		User.userCount += 1
 		self.id = User.userCount
 		self.name = 'name' + str(self.id)
 		self.phone = 'phone' + str(self.id)
 		self.skills = {}
-		for skillLabel in User.skillsDictionary:
+		for skillLabel in Dictionary.getSkills():
 			self.skills[skillLabel] = 0
 		self.goodProposals = []
 		self.badProposal = []
