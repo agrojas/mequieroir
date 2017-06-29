@@ -1,0 +1,65 @@
+<div layout="column">
+	<div>
+		<md-icon md-svg-icon="{{$ctrl.selected.avatar}}" class="avatar"></md-icon>
+		<h2>Job</h2>
+		<p>{{$ctrl.selected.name}}</p>
+		<h2>Skills</h2>
+		<md-chips ng-model="$ctrl.selected.skills" name="skill" readonly="true"
+		        md-removable="false" >
+		<md-chip-template>
+		  <strong>{{$chip}}</strong>
+		</md-chip-template>
+		</md-chips>
+
+
+		<h2>Benefits</h2>
+		<md-chips ng-model="$ctrl.selected.benefits" name="skill" readonly="true"
+		        md-removable="false" >
+		<md-chip-template>
+		  <strong>{{$chip}}</strong>
+		</md-chip-template>
+		</md-chips>
+
+		<h2>Description</h2>
+		<p>{{$ctrl.selected.content}}</p>
+		
+	</div>		
+
+    <div layout="row" layout-align="space-between center" flex>
+      <md-button
+        class="md-fab md-primary"
+        aria-label="Navigation"
+        ng-click="$ctrl.next()">
+        <md-icon md-svg-src="./assets/svg/not_interested.svg" class="step "></md-icon>
+      </md-button>
+      <md-button
+        class="md-fab md-accent"
+        aria-label="Favorites"
+        ng-click="$ctrl.next()">
+        <md-icon md-svg-src="./assets/svg/thumb_down.svg" class="step "></md-icon>
+      </md-button>
+      <md-button
+        class="md-fab md-accent"
+        aria-label="Favorites"
+        ng-click="$ctrl.next()">
+        <md-icon md-svg-src="./assets/svg/thumb_up.svg" class="step "></md-icon>
+      </md-button>
+      <md-button
+        class="md-fab md-warn"
+        aria-label="More"
+        ng-click="$ctrl.next()">
+        <md-icon md-svg-src="./assets/svg/favorite.svg" class="step "></md-icon>
+      </md-button>
+    </div>
+</div>
+
+
+
+
+
+
+<!-- 
+<md-button class="md-fab md-fab-bottom-right" ng-click="$ctrl.next($event)" aria-label="Share">
+  <md-icon md-svg-icon="share" ></md-icon>
+</md-button>
+ -->
