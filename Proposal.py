@@ -14,29 +14,17 @@ class Proposal:
 		#self.phone = 'phone' + str(self.id)
 		self.skills = []
 		self.benefits = []
-	
-	def setRandomSkills(self):
-		self.skills = []
-		while (len(self.skills)==0):
-			for key in Dictionary.getSkills():
-				if (key != "objetos"):
-					if(random.randint(0, 1) == 1):
-						self.skills.append(key)
-						if (key == "c++" or key == "c#" or key == "java"):
-							self.skills.append("objetos")
-
-	def setRandomBenefits(self):
-		self.benefits = []
-		for key in Dictionary.getBenefits():
-			if(random.randint(0, 1) == 1):
-				self.benefits.append(key)
+		self.expertise = ""
+		self.area = []
 
 	@staticmethod
 	def getRandomProposals(quantity):
 		proposals = []
 		for x in range(0, quantity):
 			proposal = Proposal()
-			proposal.setRandomSkills()
-			proposal.setRandomBenefits()
+			proposal.skills = Dictionary.getRandomSkills()
+			proposal.expertise = Dictionary.getRandomExpertiseLevel()
+			proposal.area = Dictionary.getAreas(proposal.skills)
+			proposal.benefits = Dictionary.getRandomBenefits()
 			proposals.append(proposal)
 		return proposals
