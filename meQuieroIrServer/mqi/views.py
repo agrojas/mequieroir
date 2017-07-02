@@ -33,9 +33,9 @@ def jsonify(data):
         if type(value).__module__=='numpy': # if value is numpy.*: > to python list
             value = value.tolist()
         if isinstance(value, User): # for User
-            value = {"id":value.id,"name":value.name,"skills":value.skills}
+            value = {"id":value.id,"name":value.name,"skills":value.skills,"expertise":value.expertise,"area":value.area}
         if isinstance(value, Proposal): # for User
-            value = {"id":value.id,"benefits":value.benefits,"skills":value.skills,"content":value.content,"name":value.name}
+            value = {"id":value.id,"benefits":value.benefits,"skills":value.skills,"content":value.content,"name":value.name,"area":value.area,"expertise":value.expertise}
         json_data[key] = value
     return json_data
 
