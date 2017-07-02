@@ -2,7 +2,8 @@
 <md-list>
   <md-list-item ng-repeat="proposal in $ctrl.proposals">
     <md-button ng-click="$ctrl.showDetails({proposal:proposal})" ng-class="{'selected' : proposal === $ctrl.selected }">
-      <md-icon md-svg-icon="{{proposal.avatar}}" class="avatar"></md-icon>
+
+     <md-icon md-svg-src="./assets/svg/stars.svg"></md-icon>
       {{proposal.name}}
     </md-button>
   </md-list-item>

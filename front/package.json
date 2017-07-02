@@ -18,8 +18,7 @@
       "angular-messages": "github:angular/bower-angular-messages@1.5.8",
       "css": "github:systemjs/plugin-css@^0.1.20",
       "json": "github:systemjs/plugin-json@^0.1.0",
-      "text": "github:systemjs/plugin-text@^0.0.4",
-      "material-design-icons": "github:google/material-design-icons@3.0.1"
+      "text": "github:systemjs/plugin-text@^0.0.4"
     },
     "devDependencies": {
       "traceur": "github:jmcriffey/bower-traceur@0.0.93",
@@ -33,8 +32,5 @@
   "scripts": {
     "postinstall": "jspm install",
     "serve": "live-server ./app"
-  },
-  "dependencies": {
-    "material-design-icons": "^3.0.1"
   }
 }
