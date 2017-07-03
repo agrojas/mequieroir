@@ -21,6 +21,10 @@ neighborsTool = None
 neighborsTool = NeighborsTool("proposals.csv")
 
 
+
+def addProposal(request, id, proposalId):
+    return HttpResponse("addProposal")
+
 def jsonify(data):
     json_data = dict()
     for key, value in data.iteritems():
