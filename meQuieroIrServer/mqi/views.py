@@ -14,16 +14,10 @@ from Dataset import *
 from NeighborsTool import *
 
 datasetInitializer = Dataset()
-#datasetInitializer.randomInitialize()
 datasetInitializer.fixedInitialize()
 datasetInitializer.saveProposalsToCsv("proposals.csv");
 neighborsTool = None
 neighborsTool = NeighborsTool("proposals.csv")
-
-
-
-def addProposal(request, id, proposalId):
-    return HttpResponse("addProposal")
 
 def jsonify(data):
     json_data = dict()
@@ -72,6 +66,7 @@ def makeCompleteResponse(data):
     response["goodProposal"] = data["goodProposal"]
     return response
 
+
 def results(request, id):
     proposalToResponse = -1
 
@@ -110,3 +105,12 @@ def results(request, id):
     
     return HttpResponse(JsonResponse(response_data), content_type="application/json")
 
+
+
+def addProposal(request, id, proposalId):
+    response = {}
+    for user in datasetInitializer.users:
+        if (user.id == int(id)):
+            proposal = getProposalById(proposalId)
+            user.goodProposals.append(proposal)
+    return results(request,id)
